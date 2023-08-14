@@ -1,0 +1,7 @@
+DatasetConfig:
+  dataset: 'db2'
+  batch_size: 16
+  num_workers: 6
+  seq_lens: [400] # sample rate: 2000Hz -> 1 dot: 0.5ms
+  step: 20
+  root_path: './EMG_CSV/S1_E1_A1'
