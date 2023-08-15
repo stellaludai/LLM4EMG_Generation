@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bc05ffe2-49a7-418f-80ab-190f75633d58" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="7066dd58-9334-4703-801a-e8ae325002de" />
+  <component name="ProjectId" id="1kDhUAwK1nKphDkCsoyzGGQZVjc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Codes\EEG\NinaProNet\config" />
+      <recent name="D:\Codes\EEG\NinaProNet" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.NinaPro_dataset">
+    <configuration name="NinaPro_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NinaProNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataloaders" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloaders/NinaPro_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testqwq" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NinaProNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testqwq.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_dl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NinaProNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\Codes\EEG\NinaProNet\train_dl.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_ml" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NinaProNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_ml.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="unzip_ninapro" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NinaProNet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/util" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/util/unzip_ninapro.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.NinaPro_dataset" />
+        <item itemvalue="Python.testqwq" />
+        <item itemvalue="Python.train_dl" />
+        <item itemvalue="Python.unzip_ninapro" />
+        <item itemvalue="Python.train_ml" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc05ffe2-49a7-418f-80ab-190f75633d58" name="Default Changelist" comment="" />
+      <created>1605241082187</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605241082187</updated>
+      <workItem from="1606208576808" duration="3472000" />
+      <workItem from="1606373014345" duration="11359000" />
+      <workItem from="1606912719001" duration="8128000" />
+      <workItem from="1606964315981" duration="6742000" />
+      <workItem from="1607090807403" duration="16322000" />
+      <workItem from="1607165087162" duration="1347000" />
+      <workItem from="1607174555718" duration="9924000" />
+      <workItem from="1607228372485" duration="1785000" />
+      <workItem from="1607524929707" duration="1504000" />
+      <workItem from="1607567804460" duration="6602000" />
+      <workItem from="1607686671160" duration="753000" />
+      <workItem from="1607755375745" duration="181000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.txt" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="634" y="155" key="FileChooserDialogImpl" timestamp="1607688691726">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="634" y="155" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607688691726" />
+    <state width="1855" height="48" key="GridCell.Tab.0.bottom" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="265" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606385148163" />
+    <state width="1855" height="48" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="1855" height="48" key="GridCell.Tab.0.center" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="265" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606385148163" />
+    <state width="1855" height="48" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="1855" height="48" key="GridCell.Tab.0.left" timestamp="1607688692636">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="265" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606385148163" />
+    <state width="1855" height="48" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692636" />
+    <state width="1855" height="48" key="GridCell.Tab.0.right" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="265" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606385148163" />
+    <state width="1855" height="48" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="1855" height="48" key="GridCell.Tab.1.bottom" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="513" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606385148157" />
+    <state width="1855" height="48" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="1855" height="48" key="GridCell.Tab.1.center" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="513" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1606385148157" />
+    <state width="1855" height="48" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="1855" height="48" key="GridCell.Tab.1.left" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="513" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1606385148157" />
+    <state width="1855" height="48" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="1855" height="48" key="GridCell.Tab.1.right" timestamp="1607688692637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1483" height="513" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1606385148157" />
+    <state width="1855" height="48" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607688692637" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1606618091686">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1606380679513" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1606618091686" />
+    <state x="497" y="308" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606209641130">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="497" y="308" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606209641130" />
+    <state x="90" y="0" width="863" height="1353" key="find.popup" timestamp="1607093893009">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="90" y="0" width="863" height="1353" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607093893009" />
+    <state x="724" y="236" key="refactoring.ChangeSignatureDialog" timestamp="1606394843848">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="724" y="236" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606394843848" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/train_ml.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataloaders/NinaPro_dataset.py</url>
+          <line>308</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataloaders/NinaPro_dataset.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="np.where(label == np.max(label))" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/NinaProNet$testqwq.coverage" NAME="testqwq Coverage Results" MODIFIED="1607183887757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NinaProNet$train_dl.coverage" NAME="train_dl Coverage Results" MODIFIED="1607099743443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NinaProNet$train_ml.coverage" NAME="train_ml Coverage Results" MODIFIED="1606922673041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/NinaProNet$unzip_ninapro.coverage" NAME="unzip_ninapro Coverage Results" MODIFIED="1607094547891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/util" />
+    <SUITE FILE_PATH="coverage/NinaProNet$NinaPro_dataset.coverage" NAME="NinaPro_dataset Coverage Results" MODIFIED="1607686726412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataloaders" />
+  </component>
+</project>

@@ -1,10 +1,13 @@
 from util.visualization.visualize_loss import loss_visualize
 from prefetch_generator import BackgroundGenerator
-from dataloaders.NinaPro_dataset import *
+# from dataloaders.NinaPro_dataset import *
 from util.parse_config import parse_config
 from torch.utils.data import DataLoader
 from losses.loss_function import FocalLossV2, FocalLoss
 from networks.NetFactory import NetFactory
+import numpy as np
+import matplotlib as plt
+import os
 import torchvision.transforms as tt
 import torch.optim as optim
 import torch.nn as nn
@@ -186,6 +189,6 @@ def train(config):
 
 
 if __name__ == '__main__':
-    config_file = 'config/train_dl.txt'
+    config_file = 'yc_process/config/train_dl.txt'
     cfg = parse_config(config_file)
     train(config=cfg)

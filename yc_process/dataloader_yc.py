@@ -206,7 +206,7 @@ def get_dataloader_db2_regress(cfg):
     return train_loader, val_loader
 
 def main():
-    with open('cfg/db2.yaml') as cfg_file:
+    with open('yc_process/cfg/db2.yaml') as cfg_file:
         cfg = CN.load_cfg(cfg_file)
         print('Successfully loading the config file...')
         dataCfg = cfg['DatasetConfig']
