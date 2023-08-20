@@ -3,7 +3,7 @@ import torch.nn.functional as F
 
 
 class NinaProNet(nn.Module):
-    def __init__(self, class_num=None, base_features=16, window_length=256, input_channels=10):
+    def __init__(self, class_num=None, base_features=16, window_length=400, input_channels=36):
         super(NinaProNet, self).__init__()
         self.class_num = class_num
         self.conv1 = nn.Sequential(

@@ -4,7 +4,7 @@ cutoff_frequency      = 1
 sampling_frequency    = 100
 window_length         = 16
 overlap               = 0
-batch_size            = 256
+batch_size            = 16
 iter_num              = 25600
 
 [network]
@@ -14,8 +14,8 @@ drop_rate               = 0.5
 dilation                = 1
 depth                   = False
 slice_margin            = 3
-class_num               = 6
-input_channel           = 1
+class_num               = 49
+input_channel           = 400
 
 [training]
 load_weight        = False
@@ -27,5 +27,5 @@ start_iteration    = 0
 train_step         = 1
 test_step          = 1
 print_step         = 10
-model_save_prefix  = weights/train_model
+model_save_prefix  = D:\Datasets\NinaproDataset
 best_accuracy      = 0.0

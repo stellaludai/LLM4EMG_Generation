@@ -132,9 +132,10 @@ def train(config):
         for i, sample in enumerate(trainLoader):
             
             data, label = sample[0].to(device), sample[1].to(device)
+            data = data.transpose(1,2)
             prediction = net(data)
-            evaluator.get_data(prediction, label.squeeze(1).squeeze(1))
-            train_loss = loss_func(prediction, label.squeeze(1).squeeze(1))
+            evaluator.get_data(prediction, label.squeeze(1))
+            train_loss = loss_func(prediction, label.squeeze(1).long())
             train_batch_loss += train_loss
             # train_loss = torch.abs(train_loss - 0.4) + 0.4  # trick: flood loss
             optimizer.zero_grad()  # 梯度归零
@@ -154,10 +155,11 @@ def train(config):
             valid_batch_loss = 0
             evaluator.clean()
             for i, sample in enumerate(validLoader):
-                data, label = sample['data'].to(device), sample['label'].to(device)
+                data, label = sample[0].to(device), sample[1].to(device)
+                data = data.transpose(1,2)
                 prediction = net(data)
-                evaluator.get_data(prediction, label.squeeze(1).squeeze(1))
-                valid_loss = loss_func(prediction, label.squeeze(1).squeeze(1))
+                evaluator.get_data(prediction, label.squeeze(1))
+                valid_loss = loss_func(prediction, label.squeeze(1).long())
                 valid_batch_loss += valid_loss
         valid_batch_loss = valid_batch_loss.cpu().detach().numpy() / (i + 1)
         valid_accuracy, valid_class_accuracy = evaluator.evaluate()
