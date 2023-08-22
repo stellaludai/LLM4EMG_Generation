@@ -50,12 +50,9 @@ def cut(emg, label):
             i += 50
     return ans_emg, ans_label
 
-
 """
 统计不同标签的个数
 """
-
-
 def count_unique_labels(labels):
     label_count = {}  # 用字典来存储不同标签及其对应的个数
 
@@ -84,20 +81,23 @@ labels.extend(E3_label)
 
 import random
 
-
 # 找到所有标签为 0 的样本的索引
 label_0_indices = [i for i, label in enumerate(labels) if label == 0]
 
-# 随机选择 100 个标签为 0 的样本的索引
+# 随机选择 53600 个标签为 0 的样本的索引
 selected_indices = random.sample(label_0_indices, min(53600, len(label_0_indices)))
 
 # 保留不在选定索引中的样本和标签
 emgs = [emgs[i] for i in range(len(emgs)) if i not in selected_indices]
 labels = [labels[i] for i in range(len(labels)) if i not in selected_indices]
 
-
-
 count_unique_labels(labels)  # 统计不同标签的数据样本量
+
+emgs = np.array(emgs)
+labels = np.array(labels)
+emgs = torch.tensor(emgs, dtype=torch.float32)
+labels = torch.tensor(labels, dtype=torch.int64)
+
 
 class EMG_dataset(data.Dataset):
     def __init__(self, emgs, labels):
@@ -115,27 +115,13 @@ class EMG_dataset(data.Dataset):
 
 train_emgs, test_emgs, train_labels, test_labels = train_test_split(emgs, labels, test_size=0.4, random_state=42)
 
-train_emgs = np.array(train_emgs)
-train_labels = np.array(train_labels)
-test_emgs = np.array(test_emgs)
-test_labels = np.array(test_labels)
-train_emgs = torch.tensor(train_emgs)
-train_labels = torch.tensor(train_labels, dtype=torch.int64)
-test_emgs = torch.tensor(test_emgs)
-test_labels = torch.tensor(test_labels, dtype=torch.int64)
-
-print(train_labels.dtype)
-
-
-# 创建训练集的 EMG_dataset 和 DataLoader
+# # 创建训练集的 EMG_dataset 和 DataLoader
 train_dataset = EMG_dataset(train_emgs, train_labels)
-train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
+train_dataloader = data.DataLoader(train_dataset, batch_size=32, shuffle=True)
 
 # 创建测试集的 EMG_dataset 和 DataLoader
 test_dataset = EMG_dataset(test_emgs, test_labels)
-test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False)
-
-
+test_dataloader = data.DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 
 """
@@ -161,6 +147,27 @@ class Model(nn.Module):
         logits = self.linear_5(x)  # 未激活的输出叫做logits
         return logits
 
+
+class CNNModel(nn.Module):
+    def __init__(self, input_size, num_classes):
+        super(CNNModel, self).__init__()
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=3, padding=1)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.fc1 = nn.Linear(64 * 50 * 6, 128)
+        self.fc2 = nn.Linear(128, num_classes)
+
+    def forward(self, x):
+        x = x.unsqueeze(1)  # 添加通道维度
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 64 * 50 * 6)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+
+
 """
 初始化损失函数
 """
@@ -171,16 +178,21 @@ loss_fn = torch.nn.CrossEntropyLoss()
 """
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(torch.cuda.is_available())
-model = Model().to(device)  # 初始化模型
+# 初始化模型
+
+model = Model().to(device)
 opt = torch.optim.SGD(model.parameters(), lr=0.001)
 
 """
 训练函数:对所有数据训练一次
 """
+
+
+
+
 def train(dl, model, loss_fn, optimizer):
     size = len(dl.dataset)  # 获取当前数据集的大小
     num_batches = len(dl)  # 获取总批次数
-
 
     train_loss, correct = 0, 0
 
@@ -203,6 +215,7 @@ def train(dl, model, loss_fn, optimizer):
 
     return correct, train_loss
 
+
 def test(test_dl, model, loss_fn):
     size = len(test_dl.dataset)  # 获取当前数据集的大小
     num_batches = len(test_dl)  # 获取总批次数
@@ -214,8 +227,10 @@ def test(test_dl, model, loss_fn):
             y = y.view(-1)
             pre = model(x)
             loss = loss_fn(pre, y)
+
             correct += (pre.argmax(1) == y).type(torch.float).sum().item()
             test_loss += loss.item()
+
         correct /= size
         test_loss /= num_batches
 
