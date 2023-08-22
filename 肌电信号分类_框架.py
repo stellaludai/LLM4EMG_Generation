@@ -7,6 +7,7 @@ from torch import nn
 import scipy.io as scio
 from torch.utils import data
 from sklearn.model_selection import train_test_split
+import torch.nn.functional as F
 
 """
 这是一个基本的框架
@@ -19,7 +20,11 @@ from sklearn.model_selection import train_test_split
 def LoadMat(path):
     mat = scio.loadmat(path)
     emg = mat['emg']
-    label = mat['restimulus']
+    label = []
+    try:
+        label = mat['restimulus']
+    except:
+        label = mat['stimulus']
     return emg, label
 
 
@@ -45,9 +50,12 @@ def cut(emg, label):
             i += 50
     return ans_emg, ans_label
 
+
 """
 统计不同标签的个数
 """
+
+
 def count_unique_labels(labels):
     label_count = {}  # 用字典来存储不同标签及其对应的个数
 
@@ -62,9 +70,9 @@ def count_unique_labels(labels):
         print(f"标签 {label} 的个数：{count}")
 
 
-E1_emg, E1_label = LoadMat('D:/Desktop/data/ninapro/db1/DB1_s1/S1_A1_E1.mat')
-E2_emg, E2_label = LoadMat('D:/Desktop/data/ninapro/db1/DB1_s1/S1_A1_E2.mat')
-E3_emg, E3_label = LoadMat('D:/Desktop/data/ninapro/db1/DB1_s1/S1_A1_E3.mat')
+E1_emg, E1_label = LoadMat('D:/Desktop/data/ninapro/db2/DB2_s1/S1_E1_A1.mat')
+E2_emg, E2_label = LoadMat('D:/Desktop/data/ninapro/db2/DB2_s1/S1_E2_A1.mat')
+E3_emg, E3_label = LoadMat('D:/Desktop/data/ninapro/db2/DB2_s1/S1_E3_A1.mat')
 
 emgs, labels = cut(E1_emg, E1_label)
 E2_emg, E2_label = cut(E2_emg, E2_label)
@@ -76,11 +84,12 @@ labels.extend(E3_label)
 
 import random
 
+
 # 找到所有标签为 0 的样本的索引
 label_0_indices = [i for i, label in enumerate(labels) if label == 0]
 
 # 随机选择 100 个标签为 0 的样本的索引
-selected_indices = random.sample(label_0_indices, min(3600, len(label_0_indices)))
+selected_indices = random.sample(label_0_indices, min(53600, len(label_0_indices)))
 
 # 保留不在选定索引中的样本和标签
 emgs = [emgs[i] for i in range(len(emgs)) if i not in selected_indices]
@@ -104,15 +113,30 @@ class EMG_dataset(data.Dataset):
         return len(self.emgs)
 
 
-train_emgs, test_emgs, train_labels, test_labels = train_test_split(emgs, labels, test_size=0.2, random_state=42)
+train_emgs, test_emgs, train_labels, test_labels = train_test_split(emgs, labels, test_size=0.4, random_state=42)
+
+train_emgs = np.array(train_emgs)
+train_labels = np.array(train_labels)
+test_emgs = np.array(test_emgs)
+test_labels = np.array(test_labels)
+train_emgs = torch.tensor(train_emgs)
+train_labels = torch.tensor(train_labels, dtype=torch.int64)
+test_emgs = torch.tensor(test_emgs)
+test_labels = torch.tensor(test_labels, dtype=torch.int64)
+
+print(train_labels.dtype)
+
 
 # 创建训练集的 EMG_dataset 和 DataLoader
 train_dataset = EMG_dataset(train_emgs, train_labels)
-train_dataloader = data.DataLoader(train_dataset, batch_size=32, shuffle=True)
+train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=32, shuffle=True)
 
 # 创建测试集的 EMG_dataset 和 DataLoader
 test_dataset = EMG_dataset(test_emgs, test_labels)
-test_dataloader = data.DataLoader(test_dataset, batch_size=32, shuffle=False)
+test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=32, shuffle=False)
+
+
+
 
 """
 创建模型
@@ -121,14 +145,14 @@ test_dataloader = data.DataLoader(test_dataset, batch_size=32, shuffle=False)
 class Model(nn.Module):
     def __init__(self):
         super(Model, self).__init__()
-        self.linear_1 = nn.Linear(2000, 1000)  # 1000为超参数，可以自己选择
+        self.linear_1 = nn.Linear(2400, 1000)  # 1000为超参数，可以自己选择
         self.linear_2 = nn.Linear(1000, 648)
         self.linear_3 = nn.Linear(648, 328)
         self.linear_4 = nn.Linear(328, 168)
-        self.linear_5 = nn.Linear(168, 24)  # 输出为13个类别
+        self.linear_5 = nn.Linear(168, 41)  # 输出为41个类别
 
     def forward(self, input):
-        x = input.view(-1, 200 * 10)
+        x = input.view(-1, 200 * 12)
         x = x.to(self.linear_1.weight.dtype)
         x = torch.relu(self.linear_1(x))
         x = torch.relu(self.linear_2(x))
@@ -195,7 +219,7 @@ def test(test_dl, model, loss_fn):
         correct /= size
         test_loss /= num_batches
 
-        return correct, test_loss
+    return correct, test_loss
 
 
 epochs = 2000
