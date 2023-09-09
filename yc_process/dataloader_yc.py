@@ -84,6 +84,49 @@ def RMS(x,window_size,step):
             feature[j,i]=np.sqrt(np.mean(x[j:j+window_size,i]**2))
     return feature
 
+def get_dataloader_db2_e1(cfg):
+    seq_lens = cfg.seq_lens
+    step = cfg.step
+    data_path1 = r'D:\Datasets\NinaproDataset\DB2\S1_E1_A1.mat'
+    EMGData1 = scio.loadmat(data_path1)
+    emgs = EMGData1['emg']
+    labels = EMGData1['restimulus']
+    rerepetition = EMGData1['rerepetition']
+    emgs=low_filter_3ch(emgs,2000)
+
+    u = 256
+    for i in range(emgs.shape[1]):
+        emgs[:, i] = np.sign(emgs[:, i]) * np.log(1+u*abs(emgs[:, i]))/np.log(1+u)
+    length_dots = len(emgs)
+    print(emgs.shape)
+    print(labels.shape)
+    print(np.amax(labels))
+
+    data_train = []
+    labels_train = []
+    data_val = []
+    labels_val = []
+
+    for seq_len in seq_lens:
+        for idx in range(0, length_dots - length_dots % seq_len, step):
+            if idx + seq_len > length_dots:
+                break
+            if labels[idx] > 0 and labels[idx + seq_len - 1] > 0 and labels[idx] == labels[idx + seq_len - 1]:
+                repetition = rerepetition[idx]
+                if repetition in [2, 5]:  # val dataset
+                    data_val.append(emgs[idx:idx + seq_len, :])
+                    labels_val.append(labels[idx])
+                else:  # train dataset #[1,3,4,6]
+                    data_train.append(emgs[idx:idx + seq_len, :])
+                    labels_train.append(labels[idx])
+    
+    trainset = Ninapro_regress(data_train, labels_train)
+    valset = Ninapro_regress(data_val, labels_val)
+    train_loader = DataLoader(trainset, batch_size=cfg.batch_size, num_workers=cfg.num_workers, shuffle=True,drop_last=True)
+    val_loader = DataLoader(valset, batch_size=cfg.batch_size, num_workers=cfg.num_workers, shuffle=False,drop_last=True)
+    return train_loader, val_loader
+
+
 def get_dataloader_db2(cfg,exercise):
     seq_lens = cfg.seq_lens
     step = cfg.step
@@ -114,9 +157,9 @@ def get_dataloader_db2(cfg,exercise):
     emgs = np.vstack([emg1,emg2,emg3])
     labels = np.vstack([restimulus1,restimulus2,restimulus3])
     rerepetition = np.vstack([rerepetition1,rerepetition2,rerepetition3])
-    print(emgs.shape)
-    print(labels.shape)
-    print(rerepetition.shape)
+    # print(emgs.shape)
+    # print(labels.shape)
+    # print(rerepetition.shape)
     length_dots = len(emgs)
     print(emgs.shape)
     print(labels.shape)
@@ -169,17 +212,17 @@ def get_dataloader_db2_regress(cfg):
     restimulus3 = EMGData3['restimulus']
     restimulus3 = restimulus3 + restimulus2.max() * (restimulus3>0).astype('int')
     rerepetition3 = EMGData3['rerepetition']
-    print(emg1.shape, emg2.shape, emg3.shape)
-    print(restimulus1.shape, restimulus2.shape, restimulus3.shape)
-    print(rerepetition1.shape, rerepetition2.shape, rerepetition3.shape)
+    # print(emg1.shape, emg2.shape, emg3.shape)
+    # print(restimulus1.shape, restimulus2.shape, restimulus3.shape)
+    # print(rerepetition1.shape, rerepetition2.shape, rerepetition3.shape)
     emgs = np.vstack([emg1,emg2,emg3])
     labels = np.vstack([restimulus1,restimulus2,restimulus3])
     rerepetition = np.vstack([rerepetition1,rerepetition2,rerepetition3])
-    emgs=low_filter_3ch(emgs,2000)
+    # emgs=low_filter_3ch(emgs,2000)
 
-    u = 256
-    for i in range(emgs.shape[1]):
-        emgs[:, i] = np.sign(emgs[:, i]) * np.log(1+u*abs(emgs[:, i]))/np.log(1+u)
+    # u = 256
+    #for i in range(emgs.shape[1]):
+    #    emgs[:, i] = np.sign(emgs[:, i]) * np.log(1+u*abs(emgs[:, i]))/np.log(1+u)
     length_dots = len(emgs)
     print(emgs.shape)
     print(labels.shape)
@@ -206,12 +249,12 @@ def get_dataloader_db2_regress(cfg):
     return train_loader, val_loader
 
 def main():
-    with open('yc_process/cfg/db2.yaml') as cfg_file:
+    with open('cfg/db2.yaml') as cfg_file:
         cfg = CN.load_cfg(cfg_file)
         print('Successfully loading the config file...')
         dataCfg = cfg['DatasetConfig']
         #paths_s = glob.glob(os.path.join(dataCfg.root_path, 'DB2_s1'))
-        train_loader, val_loader = get_dataloader_db2_regress(dataCfg)
+        train_loader, val_loader = get_dataloader_db2_e1(dataCfg)
         print('Successfully get dataloader of Ninapro dataset...')
         return train_loader, val_loader
 

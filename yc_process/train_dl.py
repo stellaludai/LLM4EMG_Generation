@@ -89,7 +89,7 @@ def train(config):
     # initiate dataset
     # change to my own dataloader
     # set class number = 49
-    class_nums = 49
+    class_nums = 17
     '''
     train_dataset = NinaProDataset(root=root,
                                    split='train',
@@ -110,7 +110,8 @@ def train(config):
     trainLoader, validLoader = dataloader_yc.main()
     # initiate net
     net_class = NetFactory.create(net_name)
-    net = net_class(base_features=base_feature_num, class_num=class_nums)
+    # net for NinaproNet
+    net = net_class(class_num=class_nums)
     net = net.to(device)
     if config_train['load_weight']:
         weight = torch.load(config_train['model_path'], map_location=lambda storage, loc: storage)
@@ -121,12 +122,13 @@ def train(config):
     loss_func = nn.CrossEntropyLoss()
     # loss_func = FocalLoss()
     optimizer = optim.Adam(net.parameters(), lr=1e-3)
-    show_loss = loss_visualize()
+    # show_loss = loss_visualize()
 
     # train begin
     for epoch in range(epochs):
         train_batch_loss = 0
         evaluator.clean()
+        #net.train(class_num=class_nums, base_features=64)
         net.train()
         # print('1')
         for i, sample in enumerate(trainLoader):
@@ -137,7 +139,7 @@ def train(config):
             evaluator.get_data(prediction, label.squeeze(1))
             train_loss = loss_func(prediction, label.squeeze(1).long())
             train_batch_loss += train_loss
-            # train_loss = torch.abs(train_loss - 0.4) + 0.4  # trick: flood loss
+            train_loss = torch.abs(train_loss - 0.4) + 0.4  # trick: flood loss
             optimizer.zero_grad()  # 梯度归零
             train_loss.backward()  # 反向传播
             optimizer.step()  # 更新参数
@@ -169,7 +171,7 @@ def train(config):
         # plot on visdom
         epoch_metrics = {'train': train_batch_loss, 'valid': valid_batch_loss,
                          'train_accuracy': train_accuracy, 'valid_accuracy': valid_accuracy}
-        show_loss.plot_loss(epoch, epoch_metrics)
+        # show_loss.plot_loss(epoch, epoch_metrics)
 
         # plot final class accuracy
         if epoch == epochs - 1:
@@ -191,6 +193,6 @@ def train(config):
 
 
 if __name__ == '__main__':
-    config_file = 'yc_process/config/train_dl.txt'
+    config_file = 'config/train_dl.txt'
     cfg = parse_config(config_file)
     train(config=cfg)

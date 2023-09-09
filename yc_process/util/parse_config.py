@@ -98,7 +98,7 @@ def parse_config(filename):
                 val = parse_value_from_string(val_str)
             else:
                 val = None
-            print(section, key, val_str, val)
+            # print(section, key, val_str, val)
             output[section][key] = val
     return output
 
@@ -107,5 +107,5 @@ if __name__ == "__main__":
     print(is_int('555'))
     print(is_float('555.10'))
     a = '[1 ,2 ,3 ]'
-    print(a)
-    print(parse_list(a))
+    # print(a)
+    # print(parse_list(a))
